@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pseudo-elementos "::before e ::after"</title>
+    <style>
+        /* Estilo geral da página */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+
+        /* Títulos principais e subtítulos */
+        h1, h2 {
+            color: #3498db; /* Cor azul para os títulos */
+            text-align: center;
+        }
+
+        /* Parágrafo e código explicativo */
+        p, code {
+            text-align: center;
+            font-size: 16px;
+        }
+
+        /* Estilo de fundo e bordas para o elemento de código */
+        code {
+            background-color: #ecf0f1;
+            padding: 10px;
+            border-radius: 5px;
+            display: inline-block;
+            margin: 10px 0;
+        }
+
+        /* Estilos para centralizar os botões na página */
+        .button-container {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0; /* Espaçamento vertical entre os botões */
+        }
+
+        /* Botão com seta que se move (Exemplo 1) */
+        .arrow-button {
+            position: relative; /* Necessário para posicionar o ::after corretamente */
+            padding: 12px 30px;
+            font-size: 16px;
+            border: 2px solid #e74c3c; /* Borda vermelha */
+            background-color: white;
+            color: #e74c3c;
+            text-transform: uppercase;
+            cursor: pointer;
+            overflow: hidden; /* Evita que o conteúdo transborde */
+            transition: background-color 0.3s ease, color 0.3s ease; /* Suave mudança de cor no hover */
+            border-radius: 5px; /* Borda levemente arredondada */
+        }
+
+        /* Adicionando uma seta ao botão com ::after */
+        .arrow-button::after {
+            content: "➔"; /* Inserimos uma seta como conteúdo */
+            position: absolute; /* Permite mover a seta independentemente do conteúdo */
+            right: 10px; /* Posiciona a seta à direita */
+            top: 50%; /* Centraliza verticalmente */
+            transform: translateY(-50%); /* Ajuste fino para centralizar */
+            transition: right 0.3s ease; /* Animação suave ao mover a seta */
+            font-size: 18px;
+        }
+
+        /* Mudanças ao passar o mouse no botão */
+        .arrow-button:hover {
+            background-color: #e74c3c; /* Cor de fundo ao passar o mouse */
+            color: white; /* Texto branco ao passar o mouse */
+        }
+
+        /* Movimento da seta ao passar o mouse */
+        .arrow-button:hover::after {
+            right: 5px; /* Move a seta ligeiramente à direita */
+        }
+
+        /* _____________________________________________________________________________ */
+
+        /* Botão com borda animada (Exemplo 2) */
+        .border-button {
+            position: relative; /* Necessário para posicionar os pseudo-elementos */
+            padding: 12px 30px;
+            font-size: 16px;
+            background-color: #3498db;
+            color: white;
+            text-transform: uppercase;
+            cursor: pointer;
+            overflow: hidden; /* Evita que o conteúdo transborde */
+            border: none;
+            border-radius: 5px; /* Borda arredondada */
+            transition: background-color 0.3s ease, color 0.3s ease; /* Suave mudança de cor no hover */
+        }
+
+        /* Adiciona uma borda superior com ::before e inferior com ::after */
+        .border-button::before,
+        .border-button::after {
+            content: "";
+            position: absolute; /* Posicionamento absoluto para bordas */
+            width: 0; /* Inicialmente, largura 0 para efeito de animação */
+            height: 3px; /* Altura das bordas */
+            background-color: white; /* Cor das bordas */
+            transition: width 0.4s ease; /* Transição suave de largura */
+        }
+
+        .border-button::before {
+            top: 0;
+            left: 0;
+        }
+
+        .border-button::after {
+            bottom: 0;
+            right: 0;
+        }
+
+        /* Aumenta a largura das bordas ao passar o mouse */
+        .border-button:hover::before,
+        .border-button:hover::after {
+            width: 100%; /* As bordas se expandem até a largura total do botão */
+        }
+
+        .border-button:hover {
+            background-color: #2980b9; /* Mudança de cor de fundo ao passar o mouse */
+        }
+
+        /* _____________________________________________________________________________ */
+
+        /* Div com barra decorativa no topo (Exemplo 3) */
+        .decorated-div {
+            position: relative;
+            background-color: white;
+            padding: 20px;
+            margin-top: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave ao redor da div */
+            border-radius: 10px; /* Bordas arredondadas */
+            max-width: 500px;
+            margin: 40px auto; /* Centraliza a div na página */
+            text-align: center;
+        }
+
+        /* Barra decorativa no topo da div usando ::before */
+        .decorated-div::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%); /* Centraliza horizontalmente */
+            width: 80px;
+            height: 6px;
+            background-color: #3498db; /* Cor da barra decorativa */
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Pseudo-elementos "::before e ::after"</h1>
+    <p>No CSS, <code>::before</code> e <code>::after</code> são pseudo-elementos que permitem inserir conteúdo antes ou depois do conteúdo de um elemento, sem alterar o HTML.</p>
+    
+    <h2>Exemplo 1: Botão com seta animada</h2>
+    <div class="button-container">
+        <button class="arrow-button">Saiba Mais</button>
+    </div>
+    
+    <h2>Exemplo 2: Botão com borda animada</h2>
+    <div class="button-container">
+        <button class="border-button">Ver Mais</button>
+    </div>
+    
+    <h2>Exemplo 3: Div com barra decorativa</h2>
+    <div class="decorated-div">
+        <p>Esta div tem uma barra decorativa no topo, adicionada com <code>::before</code>.</p>
+    </div>
+</body>
+</html>
