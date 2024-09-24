@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entendendo box-sizing: border-box</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f0f0f0;
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+        }
+        .container {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 30px;
+        }
+        .box {
+            width: 200px;
+            height: 200px;
+            background-color: #ecf0f1;
+            border: 10px solid #3498db;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .content-box {
+            box-sizing: content-box;
+        }
+        .border-box {
+            box-sizing: border-box;
+        }
+        .label {
+            text-align: center;
+            font-weight: bold;
+            margin-top: 10px;
+            color: #2980b9;
+        }
+        .explanation {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .highlight {
+            background-color: #f1c40f;
+            padding: 2px 5px;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Entendendo box-sizing: border-box</h1>
+    
+    <div class="container">
+        <div>
+            <div class="box content-box"></div>
+            <p class="label">content-box</p>
+        </div>
+        <div>
+            <div class="box border-box"></div>
+            <p class="label">border-box</p>
+        </div>
+    </div>
+    
+    <div class="explanation">
+        <h2>O que é box-sizing: border-box?</h2>
+        <p><span class="highlight">box-sizing: border-box</span> é uma propriedade CSS que altera o modelo de caixa padrão do navegador. Aqui está como funciona:</p>
+        
+        <h3>content-box (padrão):</h3>
+        <ul>
+            <li>A largura e altura definidas aplicam-se apenas ao conteúdo da caixa.</li>
+            <li>Padding e borda são adicionados ao tamanho total.</li>
+            <li>No exemplo acima, a caixa da esquerda tem um tamanho total de 260x260px (200px + 40px de padding + 20px de borda).</li>
+        </ul>
+        
+        <h3>border-box:</h3>
+        <ul>
+            <li>A largura e altura definidas incluem o conteúdo, padding e borda.</li>
+            <li>O conteúdo encolhe para acomodar o padding e a borda dentro do tamanho especificado.</li>
+            <li>No exemplo acima, a caixa da direita mantém 200x200px no total, com o conteúdo reduzido para 140x140px.</li>
+        </ul>
+        
+        <p>Usar <span class="highlight">box-sizing: border-box</span> torna o dimensionamento de elementos mais intuitivo e previsível, especialmente em layouts responsivos.</p>
+    </div>
+</body>
+</html>

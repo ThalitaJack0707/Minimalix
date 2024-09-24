@@ -1,0 +1,63 @@
+body {
+    
+    
+    
+    /* Espaço para o rodapé fixo */
+}
+
+/* 1. Box Model */
+.box {
+    
+
+
+
+
+
+    /* Border */
+    
+    
+    /* Border Radius */
+         /* Cantos arredondados uniformes */
+}
+
+.box-shadow {
+    /* Box Shadow */
+         /* Sombra regular */
+}
+
+.box-inset-shadow {
+    /* Sombra interna */
+    
+}
+
+.box-multiple-shadows {
+    /* Múltiplas sombras */
+    
+}
+
+.box-fancy-border {
+    /* Border radius variado */
+    
+}
+
+/* 2. Posicionamento */
+.relative-box {
+    
+}
+
+.absolute-box {
+    
+}
+
+.fixed-box {
+    
+}
+
+.sticky-box {
+    
+}
+
+/* Rodapé fixo */
+footer {
+    
+}

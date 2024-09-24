@@ -63,7 +63,7 @@ header {
     z-index: 9999;
     /*  Para aparecer na frente. (Para garantir) */
 }
-header.limitador {
+header .limitador {
     /* Define um layout flexbox para alinhar o conteúdo do cabeçalho */
     display: flex;
     flex-direction: row;
@@ -160,12 +160,12 @@ h2 a {
         opacity: 1;
         /* O elemento termina totalmente opaco */
     }
-}
+
 /* Conteúdo Secundário "Section" Área de texto + 3 imagens/
 front-end,
 .localizacao {
     /* Centraliza o texto nos elementos com as classes 'front-end' e 'localizacao' */
-    text-align: center;
+    
 }
 section h2 {
     /* Centraliza o texto dos h2 dentro das sections e adiciona padding */
